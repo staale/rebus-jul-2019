@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Første Juledag 2019</title>
+    <meta name="description" content="Første Juledag 2019">
+    <meta name="author" content="SitePoint">
+
+    <style>
+        .content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            margin: auto;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+        }
+        .box {
+            border: solid 0.5vmin;
+            border-radius: 0.5vmin;
+            font-size: 10vmin;
+            width: 1em;
+            bottom: 0;
+        }
+        
+    </style>
+
+</head>
+
+<body style="box-sizing: border-box; width: 100%;height: 100%;background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);">
+    <h1 style="text-align: center; font-size: 10vmin;">Vennligst skriv inn kode</h1>
+    <div class="content">
+        <img id="image" style="height: 65%;image-orientation: from-image;" src="20191224_234957.jpg">
+        <div style="position: absolute; bottom: 0; padding-bottom: 1vmin;">
+        <input id="1" value="1" type="number" min="0" max="9" class="box" style="border-color: #0000ff" />
+        <input id="2" value="1" type="number" min="0" max="9" class="box" style="border-color: #ff7500" />
+        <input id="3" value="1" type="number" min="0" max="9" class="box" style="border-color: #00ff96" />
+        <input id="4" value="1" type="number" min="0" max="9" class="box" style="border-color: #dc00ff" />
+    </div>
+    </div>
+    <script language="javascript">
+        var el1 = document.getElementById("1");
+        var el2 = document.getElementById("2");
+        var el3 = document.getElementById("3");
+        var el4 = document.getElementById("4");
+        var image = document.getElementById("image")
+        var done = false
+
+        function check(e) {
+            console.log(e.target.value, e.key, e.target.id)
+            console.log((parseInt(e.target.id) + 1) + "")
+            if (e.key != undefined) {
+                e.target.value = e.key
+            }
+            e.preventDefault();
+            var next = document.getElementById((parseInt(e.target.id) + 1) + "");
+            if (next != null) {
+                next.focus();
+            } else {
+                el1.focus();
+            }
+            if (el1.value == '1' && el2.value == '2' && el3.value == '7' && el4.value == '7') {
+                done = true
+                image.src = "20191224_235105.jpg"
+            }
+        }
+        el1.onkeypress = check;
+        el2.onkeypress = check;
+        el3.onkeypress = check;
+        el4.onkeypress = check;
+        el1.onchange = check;
+        el2.onchange = check;
+        el3.onchange = check;
+        el4.onchange = check;
+        
+        el1.onfocus = () => {
+            if (!done) {
+                image.src = "20191224_234957.jpg";
+            }
+        }
+        el2.onfocus = () => {
+            if (!done) {
+                image.src = "20191224_234824.jpg";
+            }
+        }
+        el3.onfocus = () => {
+            if (!done) {
+                image.src = "20191224_234733.jpg";
+            }
+        }
+        el4.onfocus = () => {
+            if (!done) {
+                image.src = "20191224_233532.jpg";
+            }
+        }
+
+        el1.value = 0;
+        el2.value = 0;
+        el3.value = 0;
+        el4.value = 0;
+        el1.focus();
+    </script>
+</body>
+
+</html>
